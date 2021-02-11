@@ -1,5 +1,4 @@
 import urllib
-​
 from bs4 import BeautifulSoup
 import urllib.request
 import requests
@@ -8,20 +7,18 @@ from os.path import splitext, basename
 import os
 import re
 import pytube
-​
+
 listOfLinks = []
-level = 1;
-​
+level = 1
 # youtube = pytube.YouTube("https://embed.ted.com/talks/merve_emre_how_do_personality_tests_work")
 # stream = youtube.streams.all()
 # for i in stream:
 #   print(i)
-​
-​
+
 regex = r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))"
-​
-​
-def makeDirectories():
+
+
+def make_directories():
     IsJSDirExists = os.path.exists(os.getcwd() + "/JS/")
     if not IsJSDirExists:
         os.mkdir(os.getcwd() + "/JS/")
@@ -31,18 +28,17 @@ def makeDirectories():
     IsImagesDirExists = os.path.exists(os.getcwd() + "/Images/")
     if not IsImagesDirExists:
         os.mkdir(os.getcwd() + "/Images/")
-def saveIndexHtmlFile(htmlStr):
+
+
+def save_index_html_file(htmlStr):
     try:
         htmlIndexFile = open(os.getcwd() + "/index.html", 'wb')
         htmlIndexFile.write(htmlStr.encode())
         htmlIndexFile.close()
     except IOError:
         print("Index File Exists!")
-​
-​
-​
-​
-​
+
+
 # req = urllib.request.Request("https://download.ted.com/talks/MerveEmre_PersonalityTests_2020E-light.mp4?apikey=acme-roadrunner", method='HEAD', headers={'User-Agent': 'Mozilla/5.0'})
 # r = urllib.request.urlopen(req)
 # r.getheader('Content-Type')
@@ -51,8 +47,8 @@ def saveIndexHtmlFile(htmlStr):
 # filename, file_ext = splitext(basename(disassembled.path))
 # print(filename)
 # print(file_ext)
-​
-makeDirectories()
+
+make_directories()
 source = requests.get("https://stackabuse.com/reading-and-writing-json-to-a-file-in-python/").text
 soup = BeautifulSoup(source, "lxml")
 index = str(soup)
@@ -89,7 +85,7 @@ for htmlElement in soup.find_all():
                         finally:
                             index = index.replace(w, "./CSS/" + filename + file_ext, 1)
                             f.close()
-​
+
                 except:
                     urlExceptions = w.split("\"")
                     for w in urlExceptions:
@@ -121,9 +117,10 @@ for htmlElement in soup.find_all():
                                     index = index.replace(w, "./CSS/" + filename + file_ext, 1)
                                     f.close()
                         except:
-                             #print("An exception occurred")
-                             print()
-​
-index =index.replace("https","")
-index =index.replace("http","")
-saveIndexHtmlFile(index)
+                            # print("An exception occurred")
+                            print()
+
+index = index.replace("https", "")
+index = index.replace("http", "")
+save_index_html_file(index)
+
