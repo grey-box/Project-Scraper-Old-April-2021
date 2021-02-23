@@ -9,7 +9,6 @@
 import sys
 import os
 import requests
-import shutil
 import pathlib
 import string
 
@@ -21,12 +20,7 @@ except Exception as e:
 
 # Examples of youtube downloading
 urls = [
-    'https://www.youtube.com/watch?v=3UILJyJTI-c',
-    'https://www.youtube.com/watch?v=vNaEBbFbvcY',
-    'https://www.youtube.com/watch?v=xx4562gesw0',
-    'https://www.youtube.com/watch?v=rcv_tYcRgw4',
-    'https://www.youtube.com/watch?v=v3hd3AI2CAA',
-    'https://www.youtube.com/watch?v=jI-HeXhsUIg&t=3s'
+    'https://www.youtube.com/watch?v=sugvnHA7ElY'
 ]
 
 
