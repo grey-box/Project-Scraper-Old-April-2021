@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 from os.path import splitext, basename
 import os
 import re
-#import lxml
+import lxml
 import pytube
 
 listOfLinks = []
