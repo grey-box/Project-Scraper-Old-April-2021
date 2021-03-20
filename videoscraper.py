@@ -1,5 +1,5 @@
-# Author: Cristian Ciungu 
-# Date: March 20th, 2021 
+# Author:Cristian Ciungu 
+# Date:March 20th, 2021 
 
 # This program downloads the YouTube video specified in the url variable and stores it in the Web-Scraper folder. 
 # Note: this is just starter code; further modifications are needed to make the video scraper fully functional.  
