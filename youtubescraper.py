@@ -53,9 +53,9 @@ def create_html_page(yt_object, path):
 
 
 class YoutubeScraper:
-    def __init__(self, urllink):
-        self.urlLink = urllink
-        return self.scrape(urllink)
+    def __init__(self, ytlink):
+        self.urlLink = ytlink
+        return self.scrape(ytlink)
 
 
     # Examples of youtube downloading
