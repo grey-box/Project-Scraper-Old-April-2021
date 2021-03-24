@@ -4,6 +4,8 @@ from bs4 import *
 from urllib.parse import urljoin
 import os
 
+# This is just a simple python file only to test certain code to see if it works.
+# Not used for anything else
 
 def crawl(pages, depth=None):
     indexed_url = [] # a list for the main and sub-HTML websites in the main website
