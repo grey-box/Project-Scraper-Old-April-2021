@@ -55,7 +55,8 @@ def create_html_page(yt_object, path):
 class YoutubeScraper:
     def __init__(self, urllink):
         self.urlLink = urllink
-        self.scrape(urllink)
+        return self.scrape(urllink)
+
 
     # Examples of youtube downloading
     # urls = [
@@ -100,6 +101,3 @@ class YoutubeScraper:
             create_html_page(yt, path)
         else:
             print("HTML already downloaded!")
-
-
-something = YoutubeScraper("https://www.youtube.com/watch?v=XLpbqa2u3gc")
