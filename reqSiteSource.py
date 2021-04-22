@@ -83,18 +83,7 @@ from bs4 import BeautifulSoup
 #
 # main()
 
-
-
-# Pulls URL
-response = urllib.request.urlopen("https://www.ted.com/talks/julian_burschka_what_your_breath_could_reveal_about_your_health")
-webcontent = response.read()
-f = open('stg.html','wb')
-soup = BeautifulSoup(webcontent, "lxml")
-
-# Saves block holding all ".mp4" links
-mp4Link = soup.findAll(text=re.compile('.mp4'))
-print(mp4Link)
-mp4LinkBlock = str(mp4Link) # For parsing
+<iframe width='560' height='315' src='c:/Users/mrciu/OneDrive/Documents/CRISTIAN/Web-Scraper/MattLangione_2020S-480p.mp4' type='video/mp4' frameborder='0' allowfullscreen></iframe>mp4LinkBlock = str(mp4Link) # For parsing
 
 # Parsing through doc
 counter = mp4LinkBlock.count(".mp4")
