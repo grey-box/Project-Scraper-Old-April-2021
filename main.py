@@ -1,49 +1,44 @@
+#!/usr/bin/env python
+
 # This is the main entry point of our web crawler.
-# The goal is to develop a crawler that can download any web page including its HTML, CSS, JS alongside
-# all content (videos, images, etc.)
-# Authors: Arneet Singh Kalra, Qadeer Assan, Cristian Ciungu and Moayad.
+# It goes over every file downloaded by suckIT and downloads the content that suckIT missed
+# (usually videos or other multimedia content that hegely relies on JS)
+# Authors: Mark Motliuk, Arneet Singh Kalra, Qadeer Assan, Cristian Ciungu and Moayad.
 
-# Import statements
-import urllib.request
-from urllib.parse import urlparse
-import youtubescraper as ys
-from bs4 import BeautifulSoup as bs
+import os
+import sys
+from pathlib import Path
 
-# Provide link of web page to be stored locally
-youtubeLinkExample = "https://www.youtube.com/watch?v=VvGFL8yb9dM"  # Example web page
-wikipediaLinkExample = "https://en.wikipedia.org/wiki/5G"
-tedTalkLinkExample = "https://www.ted.com/talks/julian_burschka_what_your_breath_could_reveal_about_your_health"
+from presets.ted_org import ted_org
 
-
-def crawl(link):
-    # Check what type of link we are working with:
-    domain = urlparse(link).netloc
-    print(domain)
-
-    # Depending on domain of link, decide which parser to run:
-    # One big user case is youtube
-    if domain == 'www.youtube.com':
-        scraper = ys.YoutubeScraper(link)
-
-    # All other use cases (at the moment)
-    else:
-        # Create a copy of the source code of the web page
-        response = urllib.request.urlopen(link)
-        source_code = response.read()
-        # Store it in a new file -> source.html
-        f = open('source.html', 'wb')
-        f.write(source_code)
-        f.close
-
-        # TODO: Run an instance of Singlefile/Webarchive to download the HTML,CSS,JS of the webpage
-
-        # TODO: Run through the original source_code to see if the website contains any videos
-
-        # TODO: If the website contains a video, download the video and then embed it into the singlefile html code
-        # urllib.request.urlretrieve(link, 'video.mp4')
+presets = {
+    "ted.org": ted_org
+}
 
 
-# Example execution of crawler:
-#crawl(tedTalkLinkExample)
-crawl(youtubeLinkExample)
+def start(path, preset_str):
+    preset = None
 
+    for el in presets:
+        if el == preset_str:
+            preset = presets[el]
+
+    if preset is None:
+        print("Preset " + preset_str + " was not found")
+        return
+
+    if not os.path.isdir(path):
+        print("Specified path is not a valid directory")
+        return
+
+    result = list(Path(path).rglob("*.html"))
+
+    for file in result:
+        preset(file)
+
+
+if len(sys.argv) != 3:
+    print("Not enough arguments specified")
+    exit(1)
+
+start(sys.argv[1], sys.argv[2])
