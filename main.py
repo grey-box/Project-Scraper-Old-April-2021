@@ -34,7 +34,8 @@ def start(path, preset_str):
     result = list(Path(path).rglob("*.html"))
 
     for file in result:
-        preset(file)
+        preset(str(file))
+
 
 
 if len(sys.argv) != 3:
