@@ -4,8 +4,23 @@ import multithread
 from bs4 import BeautifulSoup
 
 
+# Todo preview images
 # Todo figure out duplicated
 def ted_org(file_path):
+    # If it's index.html, replace /talks/ with talks
+    if 'ted.com/index.html' in file_path:
+        file = open(file_path, "r")
+        html = file.read()
+        file.close()
+
+        file = open(file_path, "w")
+        html = html.replace("/talks/", "talks/")
+        file.write(html)
+        file.close()
+
+        return
+
+
     if 'ted.com/talks/' not in file_path:
         return
     # https://download.ted.com/products/99853.mp4
