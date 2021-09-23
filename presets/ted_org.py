@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 
 # Todo preview images
-# Todo figure out duplicated
+# Todo figure out duplicated pages
 def ted_org(file_path):
     # If it's index.html, replace /talks/ with talks
     if 'ted.com/index.html' in file_path:
@@ -19,7 +19,6 @@ def ted_org(file_path):
         file.close()
 
         return
-
 
     if 'ted.com/talks/' not in file_path:
         return

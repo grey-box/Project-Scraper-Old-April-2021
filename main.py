@@ -2,7 +2,7 @@
 
 # This is the main entry point of our web crawler.
 # It goes over every file downloaded by suckIT and downloads the content that suckIT missed
-# (usually videos or other multimedia content that hegely relies on JS)
+# (usually videos or other multimedia content that hugely relies on JS)
 # Authors: Mark Motliuk, Arneet Singh Kalra, Qadeer Assan, Cristian Ciungu and Moayad.
 
 import os
@@ -35,7 +35,6 @@ def start(path, preset_str):
 
     for file in result:
         preset(str(file))
-
 
 
 if len(sys.argv) != 3:
