@@ -33,9 +33,14 @@ def start(path, preset_str, sleep_time):
         return
 
     result = list(Path(path).rglob("*.html"))
-
-    for file in result:
-        preset(str(file), sleep_time)
+    try:
+        for file in result:
+            preset(str(file), sleep_time)
+    except KeyboardInterrupt:
+        print("ENDED")
+    except:
+        time.sleep(1)
+        start(path, preset_str, sleep_time)
 
 
 if len(sys.argv) != 4:
