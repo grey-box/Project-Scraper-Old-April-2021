@@ -23,7 +23,7 @@ pip3 install tdqm
 # Usage
 
 ```bash
-./main.py <full path to the downloaded content> <preset name>
+./main.py <full path to the downloaded content> <preset name> <sleep time between processing files (seconds, can use values like `0.5`)>
 ```
 
 ## Available presets

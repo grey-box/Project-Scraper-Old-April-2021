@@ -1,12 +1,11 @@
 import json
+import time
+
 import multithread
 
 from bs4 import BeautifulSoup
 
-
-# Todo preview images
-# Todo figure out duplicated pages
-def ted_org(file_path):
+def ted_org(file_path, sleep_time):
     # If it's index.html, replace /talks/ with talks
     if 'ted.com/index.html' in file_path:
         file = open(file_path, "r")
@@ -68,5 +67,7 @@ def ted_org(file_path):
 
     print('DONE')
     print(file_path)
+
+    time.sleep(sleep_time)
 
     # exit(1)

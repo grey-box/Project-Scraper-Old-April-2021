@@ -7,6 +7,7 @@
 
 import os
 import sys
+import time
 from pathlib import Path
 
 from presets.ted_org import ted_org
@@ -16,7 +17,7 @@ presets = {
 }
 
 
-def start(path, preset_str):
+def start(path, preset_str, sleep_time):
     preset = None
 
     for el in presets:
@@ -34,11 +35,11 @@ def start(path, preset_str):
     result = list(Path(path).rglob("*.html"))
 
     for file in result:
-        preset(str(file))
+        preset(str(file), sleep_time)
 
 
-if len(sys.argv) != 3:
+if len(sys.argv) != 4:
     print("Not enough arguments specified")
     exit(1)
 
-start(sys.argv[1], sys.argv[2])
+start(sys.argv[1], sys.argv[2], float(sys.argv[3]))
